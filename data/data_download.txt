@@ -1,0 +1,12 @@
+###Data dwonloading steps#####
+Create a data folder using "mkdir data" and navigate to inside that folder
+wget https://s3.eu-central-1.amazonaws.com/public.unit8.co/data/chest_xray.tar.gz
+tar -xf chest_xray.tar.gz
+
+
+##Note- Make sure "chest_xray" folder  should beinside "data" folder  
+ scripts have been written in such folder structure ##
+
+
+ ### Notes
+***Please see this data set's applicable license for terms and conditions. Intel®Corporation does not own the rights to this data set and does not confer any rights to it.***
