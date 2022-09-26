@@ -1,0 +1,11 @@
+name: stock-tf
+
+channels:
+  - defaults
+dependencies:
+  - python=3.8.13
+  - pip=21.2.2
+  - pip:
+    - numpy==1.22
+    - opencv-python==4.5.5.64
+    - tensorflow==2.8.0

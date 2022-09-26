@@ -1,0 +1,29 @@
+version: 1.0
+
+model:
+  name: default_model_name
+  framework: tensorflow
+  inputs: []
+  outputs: []
+device: cpu
+evaluation:
+  accuracy:
+    metric:
+      topk: 1
+    dataloader: null
+  performance:
+    dataloader: null
+
+
+
+evaluation:                                          # optional. required if user doesn't provide eval_func in neural_compressor.Quantization.
+  accuracy:                                          # optional. required if user doesn't provide eval_func in neural_compressor.Quantization.
+    metric:
+      topk: 1
+  performance:                        # optional. used to benchmark performance of passing model.
+    configs:
+      cores_per_instance: 2
+      num_of_instance: 1
+# quantization:                                        # optional. tuning constraints on model-wise for advance user to reduce tuning space.
+#   calibration:
+#     sampling_size: 200
