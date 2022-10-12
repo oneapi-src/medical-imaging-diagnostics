@@ -611,3 +611,6 @@ This section covers the inference time comparison between stock TensorFlow and T
 | Software                          | Intel® oneAPI AI Analytics Toolkit, TensorFlow
 | What you will learn               | Advantage of using TensorFlow (2.9.0 with oneDNN enabled) over the stock TensorFlow (TensorFlow 2.8.0) for CNN model architecture training and inference. Advantage of Intel® Neural Compressor over TensorFlow v2.8.0.
 
+ ### **Running on Windows**
+ 
+ In order to run this on Windows, use WSL and follow the procedure.
