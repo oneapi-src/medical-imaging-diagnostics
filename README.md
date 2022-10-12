@@ -613,4 +613,4 @@ This section covers the inference time comparison between stock TensorFlow and T
 
  ### **Running on Windows**
  
- In order to run this on Windows, use WSL and follow the procedure.
+ In order to run this on Windows, use WSL and follow the same steps as running on a linux machine.
