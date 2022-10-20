@@ -63,6 +63,7 @@ The time required for training the model, inference time and the accuracy of the
 git clone https://github.com/oneapi-src/medical-imaging-diagnostics.git
 ```
 
+>[Running on winds](#Running-on-windows)
 >**Note**: In this reference kit implementation already provides the necessary conda environment configurations to setup the software requirements. To utilize these environment scripts, first install Anaconda/Miniconda by following the instructions at the following link<br>[Anaconda installation](https://docs.anaconda.com/anaconda/install/linux/)
 
 ## Overview
