@@ -613,6 +613,6 @@ This section covers the inference time comparison between stock TensorFlow and T
 
  ### **Running on Windows**
  
- In order to run this on Windows, use WSL and follow the same steps as running on a linux machine. If WSL is not installed you can [ install WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
+ In order to run this on Windows, goto Start and open WSL and follow the same steps as running on a linux machine starating from git clone instruction. If WSL is not installed you can [ install WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
 
  > **Note** If WSL is installed and not opening, goto Start ---> Turn Windows feature on or off and make sure Windows Subsystem for Linux is checked. Restart the system after enabling it for the changes to reflect.
