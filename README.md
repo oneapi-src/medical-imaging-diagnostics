@@ -134,11 +134,11 @@ Data downloading steps:
 2. wget https://s3.eu-central-1.amazonaws.com/public.unit8.co/data/chest_xray.tar.gz
 
 3. tar -xf chest_xray.tar.gz
-
->**Note**: Make sure "chest_xray" folder should be inside "data" folder  
- scripts have been written in such folder structure
-
+ 
 ```
+ >**Note**: Make sure "chest_xray" folder should be inside "data" folder  
+ scripts have been written in such folder structure
+ 
 <br>Folder structure Looks as below after extraction of dataset.</br>
 ```
 - data
