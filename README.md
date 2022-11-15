@@ -63,6 +63,10 @@ The time required for training the model, inference time and the accuracy of the
 git clone https://github.com/oneapi-src/medical-imaging-diagnostics.git
 ```
 
+>**Note**: If you beginning to explore the reference kits on client machines such as a windows laptop, go to the [Running on Windows](#running-on-windows) section to ensure you are all set and come back here
+
+>**Note**: The performance measurements were captured on Xeon based processors. The instructions will work on WSL, however some portions of the ref kits may run slower on a client machine, so utilize the flags supported to modify the epochs/batch size to run the training or inference faster. Additionally performance claims reported may not be seen on a windows based client machine. 
+
 >**Note**: In this reference kit implementation already provides the necessary conda environment configurations to setup the software requirements. To utilize these environment scripts, first install Anaconda/Miniconda by following the instructions at the following link<br>[Anaconda installation](https://docs.anaconda.com/anaconda/install/linux/)
 
 ## Overview
@@ -130,11 +134,11 @@ Data downloading steps:
 2. wget https://s3.eu-central-1.amazonaws.com/public.unit8.co/data/chest_xray.tar.gz
 
 3. tar -xf chest_xray.tar.gz
-
->**Note**: Make sure "chest_xray" folder should be inside "data" folder  
- scripts have been written in such folder structure
-
+ 
 ```
+ >**Note**: Make sure "chest_xray" folder should be inside "data" folder  
+ scripts have been written in such folder structure
+ 
 <br>Folder structure Looks as below after extraction of dataset.</br>
 ```
 - data
@@ -613,6 +617,6 @@ This section covers the inference time comparison between stock TensorFlow and T
 
  ### **Running on Windows**
  
- In order to run this on Windows, goto Start and open WSL and follow the same steps as running on a linux machine starting from git clone instructions. If WSL is not installed you can [ install WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
+ The reference kits commands are linux based, in order to run this on Windows, goto Start and open WSL and follow the same steps as running on a linux machine starting from git clone instructions. If WSL is not installed you can [ install WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
 
  > **Note** If WSL is installed and not opening, goto Start ---> Turn Windows feature on or off and make sure Windows Subsystem for Linux is checked. Restart the system after enabling it for the changes to reflect.
