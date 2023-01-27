@@ -4,10 +4,12 @@ channels:
   - defaults
 dependencies:
   - python=3.8.13
+  - ipykernel 
+  - tqdm
+  - matplotlib
   - pip=21.2.2
-
   - pip:
     - numpy==1.19.2
     - opencv-python==4.5.5.64
-    - openvino-dev[tensorflow]==2022.1.0.dev20220316
+    - openvino-dev[tensorflow]==2022.3.0.dev20221125
     - tensorflow==2.5.0
