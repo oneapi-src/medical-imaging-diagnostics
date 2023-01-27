@@ -1,0 +1,6 @@
+data/
+model/
+nc_workspace/
+logs/
+.ipynb_checkpoints/
+*.log

@@ -4,8 +4,14 @@ channels:
   - defaults
 dependencies:
   - python=3.8.13
+  - nb_conda_kernels 
+  - jupyter
+  - ipykernel 
+  - tqdm
+  - matplotlib
   - pip=21.2.2
   - pip:
     - numpy==1.22
     - opencv-python==4.5.5.64
     - tensorflow==2.8.0
+    - protobuf==3.20.*
