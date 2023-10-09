@@ -1,4 +1,4 @@
-# Copyright (C) 2022 Intel Corporation
+# Copyright (C) 2023 Intel Corporation
 # SPDX-License-Identifier: BSD-3-Clause
 
 """
@@ -14,7 +14,7 @@ import argparse
 # import random
 import warnings
 import logging
-from cv2 import cv2
+import cv2
 import numpy as np
 import itertools
 import tensorflow as tf1
@@ -298,7 +298,7 @@ for combination in p_combinations:
             best_acc = ACCURACY
             best_combination = combination
             model = tf.train.Saver()
-            model.save(s, './model/Medical_Diagnosis_CNN')
+            model.save(s, './output/Medical_Diagnosis_CNN')
 global_end_time = time.time() - global_start_hyperparametertuning_time
 logger.info("Time taken for hyperparameter tuning ->%s", global_end_time)
 logger.info("best accuracy acheived in %f", best_acc)

@@ -1,4 +1,4 @@
-# Copyright (C) 2022 Intel Corporation
+# Copyright (C) 2023 Intel Corporation
 # SPDX-License-Identifier: BSD-3-Clause
 
 """
@@ -7,7 +7,7 @@ INC QUANTIZATION model saving
 # pylint: disable=C0301 E0401 C0103 W0612 W0702 I1101 C0411 C0413
 import os
 import argparse
-from cv2 import cv2
+import cv2
 import numpy as np
 import tensorflow as tf
 from neural_compressor.experimental import Quantization, common
@@ -28,14 +28,14 @@ if __name__ == "__main__":
                         '--modelpath',
                         type=str,
                         required=False,
-                        default='./Model/updated_model.pb',
-                        help='Model path trained with tensirflow ".pb" file')
+                        default='./output/updated_model.pb',
+                        help='Model path trained with tensorflow ".pb" file')
     parser.add_argument('-o',
                         '--outpath',
                         type=str,
                         required=False,
-                        default='./model/output',
-                        help='default output quantized model will be save in ./model/output folder')
+                        default='./output/output',
+                        help='default output quantized model will be save in ./output/output folder')
     parser.add_argument('-c',
                         '--config',
                         type=str,

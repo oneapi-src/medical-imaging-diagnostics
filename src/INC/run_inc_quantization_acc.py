@@ -1,4 +1,4 @@
-# Copyright (C) 2022 Intel Corporation
+# Copyright (C) 2023 Intel Corporation
 # SPDX-License-Identifier: BSD-3-Clause
 
 """
@@ -7,7 +7,7 @@ INC Validation
 # pylint: disable=C0301 E0401 C0103 W0612 W0702 E0401 I1101 C0411 C0413 W0105 W0611
 import os
 import argparse
-from cv2 import cv2
+import cv2
 import numpy as np
 import tensorflow as tf
 from neural_compressor.experimental import Quantization, common  # noqa: F401
@@ -24,15 +24,16 @@ warnings.filterwarnings("ignore")
 if __name__ == "__main__":
     # ## Parameters
     parser = argparse.ArgumentParser()
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument('--fp32modelpath', type=str, required=False, help='Model path trained with tensorflow ".pb" file')  # noqa: E501
+    group.add_argument('--int8modelpath', type=str, required=False, help='load the quantized model folder')   # noqa: E501
     parser.add_argument('--datapath', type=str, required=False, default='./data/test', help='dataset path')  # noqa: E501
-    parser.add_argument('--fp32modelpath', type=str, required=False, default='./Model/updated_model.pb', help='Model path trained with tensorflow ".pb" file')  # noqa: E501
     parser.add_argument('--config', type=str, required=False, default='./deploy.yaml', help='Yaml file for quantizing model, default is "./deploy.yaml"')   # noqa: E501
-    parser.add_argument('--int8modelpath', type=str, required=False, default='./output.pb', help='load the quantized model folder')   # noqa: E501
     FLAGS = parser.parse_args()
     fp_model = FLAGS.fp32modelpath
     data_folder = FLAGS.datapath
     config_path = FLAGS.config
-    int_model = FLAGS.int8modelpath
+    int_model = FLAGS.int8modelpath   
 
 
 # Defing variable
@@ -106,19 +107,18 @@ q_model = quantizer.fit()
 q_model.save(int_model)
 '''
 dataset = Dataset()
-logger.info("Evaluating the Normal Model=========================================================")
+if FLAGS.fp32modelpath is not None:
+    logger.info("Evaluating the Normal Model=========================================================")
+    evaluator = Benchmark(config_path)
+    evaluator.model = fp_model
+    evaluator.b_dataloader = common.DataLoader(dataset)
+    #print(evaluator.model)
+    logger.info(evaluator('performance'))
 
-evaluator = Benchmark(config_path)
-evaluator.model = fp_model
-evaluator.b_dataloader = common.DataLoader(dataset)
-#print(evaluator.model)
-logger.info(evaluator('performance'))
-
-
-logger.info("Evaluating the compressed Model=========================================================")
-
-evaluator = Benchmark(config_path)
-evaluator.model = int_model
-evaluator.b_dataloader = common.DataLoader(dataset)
-#print(evaluator.model)
-logger.info(evaluator('performance'))
+if FLAGS.int8modelpath is not None:
+    logger.info("Evaluating the compressed Model=========================================================")
+    evaluator = Benchmark(config_path)
+    evaluator.model = int_model
+    evaluator.b_dataloader = common.DataLoader(dataset)
+    #print(evaluator.model)
+    logger.info(evaluator('performance'))

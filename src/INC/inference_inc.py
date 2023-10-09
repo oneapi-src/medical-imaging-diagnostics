@@ -1,4 +1,4 @@
-# Copyright (C) 2022 Intel Corporation
+# Copyright (C) 2023 Intel Corporation
 # SPDX-License-Identifier: BSD-3-Clause
 
 """
@@ -9,7 +9,7 @@ Inference script
 import time
 import os
 import argparse
-from cv2 import cv2
+import cv2
 import numpy as np
 import tensorflow as tf
 import warnings
@@ -28,7 +28,7 @@ if __name__ == "__main__":
                         help='enter the required batch size parameter?')
     parser.add_argument('--modeldir',
                         type=str,
-                        default='./model/updated_model.pb',
+                        default='./output/updated_model.pb',
                         help='Specify path')
 
     paramters = parser.parse_args()

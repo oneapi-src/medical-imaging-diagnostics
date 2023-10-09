@@ -1,4 +1,4 @@
-# Copyright (C) 2022 Intel Corporation
+# Copyright (C) 2023 Intel Corporation
 # SPDX-License-Identifier: BSD-3-Clause
 
 """System module."""
@@ -29,7 +29,7 @@ else:
     print("Checking model files ===============")
 
 
-model_meta_index = Path("./model/Medical_Diagnosis_CNN.meta") and Path("./model/Medical_Diagnosis_CNN.index")
+model_meta_index = Path("./output/Medical_Diagnosis_CNN.meta") and Path("./output/Medical_Diagnosis_CNN.index")
 if model_meta_index.exists():
     logger.info("Executing training notebook. This will take a while.........")
 else:
@@ -98,7 +98,7 @@ def freeze_graph(model_dir, output_node_names):
 # Pass the model directory path & Output node names through command prompt
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model_dir", type=str, default="./model/", help="Model folder to export")
+    parser.add_argument("--model_dir", type=str, default="./output/", help="Model folder to export")
     parser.add_argument("--output_node_names", type=str, default="Softmax", help="The name of the output nodes, comma separated.")
     args = parser.parse_args()
 

@@ -1,4 +1,4 @@
-# Copyright (C) 2022 Intel Corporation
+# Copyright (C) 2023 Intel Corporation
 # SPDX-License-Identifier: BSD-3-Clause
 
 """
@@ -12,7 +12,7 @@ import argparse
 from pathlib import Path
 import time
 import warnings
-from cv2 import cv2
+import cv2
 import numpy as np
 import tensorflow as tf1
 import tensorflow.compat.v1 as tf
@@ -280,4 +280,4 @@ logger.info("Accuracy of the model is :%f", (ACCURACY * 100))
 
 # Saving the Model
 model = tf.train.Saver()
-model.save(s, './model/Medical_Diagnosis_CNN')
+model.save(s, './output/Medical_Diagnosis_CNN')

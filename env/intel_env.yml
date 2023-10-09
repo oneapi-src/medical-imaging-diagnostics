@@ -1,0 +1,8 @@
+name: medical-image-diag-tf
+channels:
+  - intel
+  - conda-forge
+  - defaults
+dependencies:
+  - intel-tensorflow=2.13.0=py39_1
+  - neural-compressor=2.2=py_0
