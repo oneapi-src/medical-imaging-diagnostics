@@ -1,3 +1,6 @@
+# Copyright (C) 2023 Intel Corporation
+# SPDX-License-Identifier: BSD-3-Clause
+
 ARG BASE_NAME=continuumio/miniconda3
 ARG BASE_TAG=22.11.1
 FROM ${BASE_NAME}:${BASE_TAG} as devkitminimal
@@ -9,7 +12,9 @@ RUN apt-get update -y \
     wget \
     libgl1 \
     libglib2.0-0 \
-    numactl
+    numactl \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 SHELL ["/bin/bash", "-c"] 
 
@@ -28,8 +33,8 @@ FROM devkitminimal as medical-image-diag
 WORKDIR /workspace
 COPY env env
 COPY docker/envinstall_all.sh envinstall_all.sh
-RUN bash envinstall_all.sh
+RUN bash envinstall_all.sh \
+    && sed -i "s/conda\ activate\ base/conda\ activate\ medical-image-diag-tf/" ~/.bashrc \
+    && groupadd -r user && useradd -r -g user -m user 
 
-RUN sed -i "s/conda\ activate\ base/conda\ activate\ medical-image-diag-tf/" ~/.bashrc
-RUN groupadd -r user && useradd -r -g user -m user 
 USER $USER
