@@ -1,4 +1,4 @@
-## **Application of AI in image-base abnormalities for different diseases classification using TensorFlow**
+## **Medical Imaging Diagnostics**
 
 ## Introduction
 
