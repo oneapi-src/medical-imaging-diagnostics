@@ -142,8 +142,6 @@ The conda yaml dependencies are kept in $WORKSPACE/env/intel_env.yml:
 | **Package**                | **Version**
 | :---                       | :---
 | Neural-compressor          | neural-compressor==2.2
-| Numpy                      | numpy=1.22.3
-| Opencv-python              | opencv=4.7.0
 | TensorFlow                 | intel-tensorflow=2.13.0
 
 Follow the next steps for setup the conda environment:
