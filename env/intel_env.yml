@@ -1,4 +1,4 @@
-name: medical-image-diag-tf
+name: medical_diagnostics_intel
 channels:
   - intel
   - conda-forge
