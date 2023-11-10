@@ -19,7 +19,6 @@ Check out more workflow examples in the [Developer Catalog](https://developer.in
  - [Download the dataset](#download-the-dataset)
  - [Supported Runtime Environment](#supported-runtime-environment)
 	- [Run Using Bare Metal](#run-using-bare-metal)
-	- [Run Using Docker](#run-using-docker)
  - [Summary and Next Steps](#summary-and-next-steps)
  - [Learn More](#learn-more)
  - [Support](#support)
@@ -201,11 +200,10 @@ tar -xf chest_xray.tar.gz
 This reference kit offers two options for running the fine-tuning and inference processes:
 
 - [Bare Metal](#run-using-bare-metal)
-- [Docker](#run-using-docker)
 
 ## Run Using Bare Metal
 
->Follow these instructions to set up and run this workflow on your own development system. For running a provided Docker image with Docker*, see the [Docker instructions](#run-using-docker).
+>Follow these instructions to set up and run this workflow on your own development system.
 
 ## Set Up and run Workflow
 Below are the steps to reproduce the results given in this repository
@@ -451,45 +449,6 @@ rm -rf
 [//]: # (capture: baremetal)
 ```bash
 rm -rf $WORKSPACE
-```
-
-## Run Using Docker*
-
-Follow these instructions to set up and run our provided Docker* image. For running on bare metal, see the bare metal instructions.
-
-1. Set Up Docker Engine* and Docker Compose*
-
-You'll need to install Docker Engine* on your development system. Note that while Docker Engine* is free to use, Docker Desktop* may require you to purchase a license. See the Docker Engine Server* installation instructions for details.
-
-To build and run this workload inside a Docker* Container, ensure you have Docker Compose* installed on your machine. If you don't have this tool installed, consult the official [Docker Compose* installation documentation](https://docs.docker.com/compose/install/linux/#install-the-plugin-manually).
-
-```sh
-DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
-mkdir -p $DOCKER_CONFIG/cli-plugins
-curl -SL https://github.com/docker/compose/releases/download/v2.7.0/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
-chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
-docker compose version
-```
-
-Set Up and Run Docker* Image
-
-In docker folder, there is a docker-compose file to build a container quickly and easily with everything necessary to be able to build Docker* containers. The following commands will build (if not already built) the Docker* containers and images declared in the compose file. Once the building process has ended, Docker* compose will run a container with an interactive shell session. Before trying to build the containers set the ENVVARS described in Get Started.
-
-```bash
-cd $WORKSPACE/docker
-docker compose -p $USER build
-docker compose -p $USER run interactive
-```
-
-Once inside the interactive shell session, the user can execute the commands described in Run Using Bare Metal.
-
-## Clean Up Docker* Containers
-
-Stop containers created by Docker Compose* and remove them.
-
-```bash
-cd $WORKSPACE/docker
-docker compose -p $USER down --remove-orphans
 ```
 
 ## Expected Output
