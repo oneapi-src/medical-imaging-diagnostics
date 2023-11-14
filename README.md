@@ -110,7 +110,7 @@ export DATA_DIR=$WORKSPACE/data/chest_xray
 export OUTPUT_DIR=$WORKSPACE/output
 ```
 
-Create the working directory and clone the [Main Repository](https://github.com/intel-innersource/frameworks.ai.platform.sample-apps.medical-imaging-diagnostics/tree/main) into the working directory:
+Create the working directory and clone the [Main Repository](https://github.com/oneapi-src/medical-imaging-diagnostics) into the working directory:
 
 [//]: # (capture: baremetal)
 ```bash
@@ -118,7 +118,7 @@ mkdir -p $WORKSPACE && cd $WORKSPACE
 ```
 
 ```bash
-git clone https://github.com/intel-innersource/frameworks.ai.platform.sample-apps.medical-imaging-diagnostics.git $WORKSPACE
+git clone https://github.com/oneapi-src/medical-imaging-diagnostics.git $WORKSPACE
 ```
 
 ### Set up Conda*
@@ -602,7 +602,7 @@ For more information about AI in image-base abnormalities for different diseases
 
 ## Support
 
-The End-to-end AI in image-base abnormalities for different diseases classification team tracks both bugs and enhancement requests using [GitHub issues](https://github.com/intel-innersource/frameworks.ai.platform.sample-apps.medical-imaging-diagnostics/issues). Before submitting a suggestion or bug report, search the [DLSA GitHub issues](https://github.com/intel-innersource/frameworks.ai.platform.sample-apps.medical-imaging-diagnostics/issues) to see if your issue has already been reported.
+The End-to-end AI in image-base abnormalities for different diseases classification team tracks both bugs and enhancement requests using [GitHub issues](https://github.com/oneapi-src/medical-imaging-diagnostics/issues). Before submitting a suggestion or bug report, search the [DLSA GitHub issues](https://github.com/oneapi-src/medical-imaging-diagnostics/issues) to see if your issue has already been reported.
 
 ## Appendix
 
