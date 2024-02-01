@@ -1,10 +1,10 @@
-## **Medical Imaging Diagnostics**
+# **Medical Imaging Diagnostics**
 
 ## Introduction
 
 In this refkit we highlighted the advantages of using Intel® OneAPI packages specially TensorFlow* Optimizations from Intel, and Intel® Distribution for Python*. <br>
 
-In this refkit we use a CNN model architecture for image classification based on a dataset form healthcare domain. The CNN-based model is a promising method to diagnose the disease through X-ray images. In this case, X-ray images used for the diagnosis of pneumonia.
+In this refkit we use a Convolutional Neural Network (CNN) model architecture for image classification based on a dataset form healthcare domain. The CNN-based model is a promising method to diagnose the disease through X-ray images. In this case, X-ray images used for the diagnosis of pneumonia.
 
 Model has been quantized using Intel® Neural Compressor, which has shown high performance vectorized operations on Intel platforms.
 
@@ -27,13 +27,13 @@ Check out more workflow examples in the [Developer Catalog](https://developer.in
 ## Solution Technical Overview
 
 Medical diagnosis of image-base abnormalities for different diseases classification is the process of determining the abnormality or condition explains a person's symptoms and signs. It is most often referred to as diagnosis with the medical context being implicit.
-Images are a significant component of the patient’s electronic healthcare record (EHR) and are one of the most challenging data sources to analyze as they are unstructured. As the number of images that require analysis and reporting per patient is growing, global concerns around shortages of radiologists have also been reported. AI-enabled diagnostic imaging aid can help address the challenge by increasing productivity, improving diagnosis and reading accuracy (e.g., reducing missed findings or false negatives), improving departmental throughput, and helping to reduce clinician burnout.
+Images are a significant component of the patient’s electronic healthcare record (EHR) and are one of the most challenging data sources to analyze as they are unstructured. As the number of images that require analysis and reporting per patient is growing, global concerns around shortages of radiologists have also been reported. AI-enabled diagnostic imaging aid can help address the challenge by increasing productivity, improving diagnosis, and reading accuracy (e.g., reducing missed findings or false negatives), improving departmental throughput, and helping to reduce clinician burnout.
 
-The most common and widely adopted application of AI algorithms in medical image diagnosis is in the classification of abnormalities. With the use of machine learning (ML) and deep learning, the AI algorithm identifies images within a study  that warrants further attention by the radiologist/reader to classify the diseases. This aids in reducing the read time as it draws the reader’s attention to the specific image and identifies abnormalities.
+The most common and widely adopted application of AI algorithms in medical image diagnosis is in the classification of abnormalities. With the use of machine learning (ML) and deep learning, the AI algorithm identifies images within a study that warrants further attention by the radiologist/reader to classify the diseases. This aids in reducing the read time as it draws the reader’s attention to the specific image and identifies abnormalities.
 
 X-ray images are critical in the detection of lung cancer, pneumonia, certain tumors, abnormal masses, calcifications, etc. In this reference kit, we demonstrate the detection of pneumonia using X-ray images and how a CNN model architecture can help identify and localize pneumonia in chest X-ray (CXR) images, using Intel® OneAPI packages specially TensorFlow* Optimizations from Intel, and Intel® Distribution for Python*.
 
-The experiment aims to classify pneumonia x-ray images to detect abnormalities from the normal lung images. The goal to improve latency, throughput (Frames/sec), and accuracy of the abnormality detection by training a CNN model in batch and inference in real-time. Hyperparameter tuning is applied at training for further optimization. <br>
+The experiment aims to classify pneumonia X-ray images to detect abnormalities from the normal lung images. The goal to improve latency, throughput (Frames/sec), and accuracy of the abnormality detection by training a CNN model in batch and inference in real-time. Hyperparameter tuning is applied at training for further optimization. <br>
 
 Since GPUs are the natural choice for deep learning and AI processing to achieve a higher FPS rate but they are also very expensive and memory consuming, the experiment applies model quantization to speed up the process using CPU, whilst reaching the standard FPS for these types of applications to operate, to show a more cost-effective option using Intel® Neural Compressor, which has shown high performance vectorized operations on Intel platforms. When it comes to the deployment of this model on edge devices, with less computing and memory resources, the experiment applies further quantization and compression to the model whilst keeping the same level of accuracy showing a more efficient utilization of underlying computing resources. <br>
 
@@ -87,7 +87,7 @@ Code was tested on Ubuntu\* 22.04 LTS.
 
 **Example Input**                                 | **Example Output** |
 | :---: | :---: |
-| <b>X ray Imaged data based on patient's complain <br></b> Fast breathing, shallow breathing, shortness of breath, or wheezing, Patient reports pain in throat, chest pain. fever and loss of appetite over  the last few days. | {'Normal': 0.1, 'Pneumonia ': 0.99}
+| <b>X-ray Imaged data based on patient's complain <br></b> Fast breathing, shallow breathing, shortness of breath, or wheezing, Patient reports pain in throat, chest pain. fever and loss of appetite over the last few days. | {'Normal': 0.1, 'Pneumonia ': 0.99}
 
 ### Dataset
 
@@ -140,8 +140,8 @@ The conda yaml dependencies are kept in $WORKSPACE/env/intel_env.yml:
 
 | **Package**                | **Version**
 | :---                       | :---
-| Neural-compressor          | neural-compressor==2.2
-| TensorFlow                 | intel-tensorflow=2.13.0
+| Neural-compressor          | neural-compressor==2.3.1
+| TensorFlow                 | intel-tensorflow=2.14.0
 
 Follow the next steps for setup the conda environment:
 
@@ -149,7 +149,7 @@ Follow the next steps for setup the conda environment:
 conda install -n base conda-libmamba-solver
 conda config --set solver libmamba
 conda env create -f $WORKSPACE/env/intel_env.yml --no-default-packages
-conda activate medical-image-diag-tf
+conda activate medical_diagnostics_intel
 ```
 
 Setting up the environment is only needed once. This step does not clean up the existing environment with the same name, so we need to make sure there is no conda environment with the same name. This will create a new conda environment with the dependencies listed in the YAML configuration.
@@ -197,7 +197,7 @@ tar -xf chest_xray.tar.gz
 
 ## Supported Runtime Environment
 
-This reference kit offers two options for running the fine-tuning and inference processes:
+This reference kit offers the following option for running the fine-tuning and inference processes:
 
 - [Bare Metal](#run-using-bare-metal)
 
@@ -205,7 +205,7 @@ This reference kit offers two options for running the fine-tuning and inference 
 
 >Follow these instructions to set up and run this workflow on your own development system.
 
-## Set Up and run Workflow
+### Set Up and run Workflow
 Below are the steps to reproduce the results given in this repository
 
 1. Training CNN model
@@ -248,7 +248,7 @@ Above training command will run in Intel environment and the output trained mode
 
 Below parameters been used for tuning
 <br>- "learning rates"      : [0.001, 0.01]
-<br>- "batchsize"           : [10,20]
+<br>- "batch size"           : [10,20]
 
 ```
 usage: medical_diagnosis_hyperparameter_tuning.py 
@@ -302,7 +302,7 @@ python src/model_conversion.py --model_dir $OUTPUT_DIR --output_node_names Softm
 
 ### 3. Inference
 
-Performed inferencing on the trained model using TensorFlow* 2.13.0 with oneDNN
+Performed inferencing on the trained model using TensorFlow* 2.14.0 with oneDNN
 
 #### Running inference using TensorFlow*
 
@@ -332,9 +332,9 @@ OMP_NUM_THREADS=4 KMP_BLOCKTIME=100 python src/inference.py --codebatchsize 1  -
 ### 4. Quantize trained models using Intel® Neural Compressor
 
 Intel® Neural Compressor is used to quantize the FP32 Model to the INT8 Model. Optimized model is used here for evaluating and timing Analysis.
-Intel® Neural Compressor supports many optimization methods. In this case, we used post training quantization with `Default Quantiztion Mode` method to quantize the FP32 model.
+Intel® Neural Compressor supports many optimization methods. In this case, we used post training quantization with `Default Quantization Mode` method to quantize the FP32 model.
 
->**Note**: We need to make sure Intel frozen_graph.pb gets generated using Intel model files only. We recommend initiate running hyperparametertuning script with default parameter to get a new model then convert to Frozen graph and using that get the compressed model, if model gets corrupted for any reason below script will not run.
+>**Note**: We need to make sure Intel frozen_graph.pb gets generated using Intel model files only. We recommend initiate running hyperparameter tuning script with default parameter to get a new model then convert to Frozen graph and using that get the compressed model, if model gets corrupted for any reason below script will not run.
 
 *Step-1: Conversion of FP32 Model to INT8 Model*
 
@@ -390,7 +390,7 @@ Same script can be used to benchmark INC INT8 Quantized model. For more details 
 
 Run this script to record multiple trials and the minimum value can be calculated.
 
-*Step-3 : Performance of  quantized Model*
+*Step-3: Performance of quantized Model*
 
 ```bash
 usage: 
@@ -416,14 +416,14 @@ optional arguments:
                              provide int8 model path ".pb" file...(Absolute path)                              
 ```
 
-**Command to run Evalution of FP32 Model**
+**Command to run Evaluation of FP32 Model**
 
 [//]: # (capture: baremetal)
 ```bash
 python src/INC/run_inc_quantization_acc.py --datapath $DATA_DIR/val --fp32modelpath $OUTPUT_DIR/updated_model.pb --config ./src/INC/deploy.yaml
 ```
 
-**Command to run Evalution of INT8 Model**
+**Command to run Evaluation of INT8 Model**
 
 [//]: # (capture: baremetal)
 ```bash
@@ -435,18 +435,15 @@ Follow these steps to restore your $WORKSPACE directory to an initial step. Plea
 
 ```bash
 conda deactivate
-conda env remove -n medical-image-diag-tf
+conda env remove -n medical_diagnostics_intel
 ```
 
-[//]: # (capture: baremetal)
 ```bash
 rm -rf $DATA_DIR/*
-rm -rf 
 ```
 
 ## Remove repository
 
-[//]: # (capture: baremetal)
 ```bash
 rm -rf $WORKSPACE
 ```
@@ -582,8 +579,8 @@ performance mode benchmark result:
 
 ## Summary and Next Steps
 
-The experiment aims to classify pneumonia x-ray images to detect abnormalities from the normal lung images, using a CNN model arquitecture.  
-The process of developing this ML pipeline can be summarised as follows:
+The experiment aims to classify pneumonia X-ray images to detect abnormalities from the normal lung images, using a CNN model architecture.  
+The process of developing this ML pipeline can be summarized as follows:
 
 - Setup and installation
 - Download the dataset
